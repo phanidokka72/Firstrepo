@@ -1,0 +1,82 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fmodern\fcharset0 Courier;\f2\fswiss\fcharset0 Helvetica;
+\f3\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red35\green38\blue42;\red244\green244\blue244;\red166\green63\blue5;
+\red69\green105\blue13;\red8\green64\blue128;\red0\green0\blue0;\red255\green255\blue255;\red26\green26\blue26;
+\red233\green239\blue245;\red8\green17\blue25;\red248\green250\blue249;\red84\green84\blue84;\red236\green236\blue236;
+\red83\green92\blue101;}
+{\*\expandedcolortbl;;\cssrgb\c18431\c20000\c21569;\cssrgb\c96471\c96471\c96471;\cssrgb\c71765\c32549\c392;
+\cssrgb\c33725\c47843\c5098;\cssrgb\c392\c32941\c57647;\csgray\c0;\csgray\c100000;\cssrgb\c13333\c13333\c13333;
+\cssrgb\c92941\c94902\c96863;\cssrgb\c2353\c8627\c12941;\cssrgb\c97647\c98431\c98039;\cssrgb\c40392\c40392\c40392;\cssrgb\c94118\c94118\c94118;
+\cssrgb\c40000\c43529\c47059;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+var myresults = db.users.\cf4 aggregate\cf2 ([\
+\{\cf5 "$match"\cf2 :\{\cf6 _id\cf2 : \cf5 "
+\fs22 \cf7 \cb8 \kerning1\expnd0\expndtw0 \CocoaLigature0 61e076636eaaf88d3fc1132b
+\fs26 \cf5 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 "\cf2 \}\}, \
+\{\cf5 "$project"\cf2 :\{\cf5 "arrayofkeyvalue"\cf2 :\{\cf5 "$objectToArray"\cf2 :\cf5 "$$ROOT"\cf2 \}\}\},\
+\{\cf5 "$project"\cf2 :\{\cf5 "keys"\cf2 :\cf5 "$arrayofkeyvalue.k"\cf2 \}\}\
+])\
+\
+var docs = myresults.toArray()\
+var resultdoc = docs[0]\
+resultdoc\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs30 \cf9 \cb10 while(myresults.hasNext())\
+	\
+	\{\
+\
+		print(tojson(myresults.next()));\
+	\
+	\}\
+\
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trwWidth3000\trftsWidth3 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth8596\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl320 \clpadr320 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf11 \cb12 collection.aggregate(pipeline).toArray()\
+  .then(docs => console.log("all documents", docs))\cb1 \cell \row
+
+\itap1\trowd \taflags5 \trgaph108\trleft-108 \trwWidth3000\trftsWidth3 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth8596\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadl320 \clpadr320 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf11 \cb12 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf2 \cb3 db.users.\cf4 aggregate\cf2 ([\
+\{\cf5 "$match"\cf2 :\{\cf6 _id\cf2 : \cf5 "
+\fs22 \cf7 \cb8 \kerning1\expnd0\expndtw0 \CocoaLigature0 61e076636eaaf88d3fc1132b
+\fs26 \cf5 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 "\cf2 \}\}, \
+\{\cf5 "$project"\cf2 :\{\cf5 "arrayofkeyvalue"\cf2 :\{\cf5 "$objectToArray"\cf2 :\cf5 "$$ROOT"\cf2 \}\}\},\
+\{\cf5 "$project"\cf2 :\{\cf5 "keys"\cf2 :\cf5 "$arrayofkeyvalue.k"\cf2 \}\}\
+]).next()\
+.then(docs => console.log(\'93next document\'94, doc))\
+\
+https://github.com/variety/variety.git\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs24 \cf13 \cb14 var allKeys = \{\}; \
+db.users.find().forEach(function(doc)\{Object.keys(doc).forEach(function(key)\{allKeys[key]=1\})\}); allKeys;\
+\
+doc=db.users.findOne(); for (key in doc) print(key);\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf15 \cb3 # empty array\cf2 \
+arr = [] \
+arr = [\'93__id\'94, \'93name\'94, \'93age\'94]\
+\
+\
+}
